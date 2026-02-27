@@ -2,12 +2,9 @@ public class PalindroneCheckApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Palindrome Checker App");
+        System.out.println("Welcome to Palindrome Checker App - UC3");
 
-
-        String word = "madam";
-
-
+        String word = "level";
         String reversed = "";
 
         for (int i = word.length() - 1; i >= 0; i--) {
