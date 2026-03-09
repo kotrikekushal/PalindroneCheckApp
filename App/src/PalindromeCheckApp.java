@@ -1,37 +1,37 @@
+import java.util.*;
+
 public class PalindromeCheckApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Palindrome Checker App - UC4");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
 
-        String word = "radar";
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
-        // Convert string to character array
-        char[] characters = word.toCharArray();
-
-        int start = 0;
-        int end = characters.length - 1;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            queue.add(ch);     // enqueue
+            stack.push(ch);    // push
+        }
 
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
-
-            if (characters[start] != characters[end]) {
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
         if (isPalindrome) {
-            System.out.println(word + " is a Palindrome.");
+            System.out.println(word + " is a Palindrome");
         } else {
-            System.out.println(word + " is NOT a Palindrome.");
+            System.out.println(word + " is NOT a Palindrome");
         }
 
-        System.out.println("Program Ended.");
+        scanner.close();
     }
 }
