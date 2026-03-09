@@ -8,19 +8,19 @@ public class PalindromeCheckApp {
         System.out.print("Enter a word: ");
         String word = scanner.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            queue.add(ch);     // enqueue
-            stack.push(ch);    // push
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        while (deque.size() > 1) {
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
+
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
